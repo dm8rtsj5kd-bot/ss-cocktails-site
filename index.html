@@ -1,0 +1,8413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>S&S Cocktails 2025 — Кордиалы и коктейли</title>
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --card-bg: #ffffff;
+      --accent: #1565c0;
+      --accent-soft: #e3f2fd;
+      --border-soft: #d5d7de;
+      --border-strong: #b0b3c0;
+      --text-main: #22252f;
+      --text-muted: #6b6f7b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 4px;
+      letter-spacing: 0.03em;
+    }
+    h2 {
+      margin: 32px 0 12px;
+      font-size: 22px;
+    }
+    .intro {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 10px 30px rgba(15,17,20,0.06);
+      border: 1px solid rgba(176,179,192,0.4);
+      margin-bottom: 32px;
+    }
+    .section { margin-bottom: 40px; }
+    /* Сетка категорий */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .category-card {
+      background: #f8f9ff;
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(176,179,192,0.6);
+      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
+    }
+    .category-card.main {
+      background: #fff8e1;
+      border-color: #ffcc80;
+    }
+    .category-card a {
+      display: block;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .category-card small {
+      display: block;
+      margin-top: 3px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .category-card:hover {
+      background: #ffffff;
+      box-shadow: 0 8px 20px rgba(15,17,20,0.08);
+      transform: translateY(-1px);
+    }
+    /* Списки кордиалов */
+    .cordial-list {
+      columns: 2;
+      column-gap: 32px;
+      padding-left: 18px;
+      font-size: 14px;
+      margin: 8px 0 0;
+    }
+    .cordial-list li {
+      break-inside: avoid;
+      margin-bottom: 6px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      margin-right: 6px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+    .back-to-top-inline {
+      font-size: 12px;
+      margin: 4px 0 12px;
+      color: var(--text-muted);
+    }
+    .back-to-top-inline a { color: var(--text-muted); }
+    /* Фиксированная кнопка "наверх" */
+    .to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(34,37,47,0.9);
+      color: #ffffff;
+      font-size: 12px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      z-index: 100;
+      backdrop-filter: blur(6px);
+    }
+    .to-top:hover {
+      background: rgba(21,101,192,0.95);
+      text-decoration: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 12px 0 28px;
+      font-size: 13px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15,17,20,0.05);
+      border: 1px solid var(--border-strong);
+    }
+    th, td {
+      padding: 6px 9px;
+      border-bottom: 1px solid var(--border-soft);
+      border-right: 1px solid var(--border-soft);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr td:last-child, tr th:last-child { border-right: none; }
+    thead th {
+      background: #f7f7fa;
+      font-weight: 600;
+      text-align: left;
+    }
+    tr.cordial-header th {
+      background: var(--accent-soft);
+      font-weight: 600;
+      font-size: 14px;
+      border-bottom: 1px solid var(--border-strong);
+      color: var(--accent);
+    }
+    tr.recipe-header th {
+      background: #f2f3f7;
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .wrapper { padding: 16px 10px 32px; }
+      .cordial-list { columns: 1; }
+      table { font-size: 12px; }
+      th, td { padding: 5px 6px; }
+    }
+  </style>
+</head>
+<body>
+<a href="#top" class="to-top">↑ К началу</a>
+<div class="wrapper">
+  <h1 id="top">S&S Cocktails 2025</h1>
+  <div class="intro">
+    Выбери категорию кордиалов, затем конкретный кордиал — и смотри коктейли, которые можно собрать на выезде.
+  </div>
+
+<div class="card section">
+<h2>Выбор категории</h2>
+<div class="category-grid">
+<div class="category-card main"><a href="#all_cordials">Весь ассортимент</a><small>Полный список всех кордиалов</small></div>
+<div class="category-card">
+<a href="#cat_Ягодные">Ягодные</a>
+<small>Кордиалы внутри категории</small>
+</div>
+<div class="category-card">
+<a href="#cat_Фруктовые">Фруктовые</a>
+<small>Кордиалы внутри категории</small>
+</div>
+<div class="category-card">
+<a href="#cat_Цитрусовые">Цитрусовые</a>
+<small>Кордиалы внутри категории</small>
+</div>
+<div class="category-card">
+<a href="#cat_Цветочно-травяные">Цветочно-травяные</a>
+<small>Кордиалы внутри категории</small>
+</div>
+<div class="category-card">
+<a href="#cat_Овощныегастро">Овощные/гастро</a>
+<small>Кордиалы внутри категории</small>
+</div>
+<div class="category-card">
+<a href="#cat_Азиатские">Азиатские</a>
+<small>Кордиалы внутри категории</small>
+</div>
+</div></div>
+<div class="card section" id="all_cordials">
+<h2>Весь ассортимент кордиалов</h2>
+<ol class="cordial-list">
+<li><span class="tag">Ягодные</span><a href="#Ягодные_1">Кордиал S&amp;S Ежевика - Лаванда</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_30">Кордиал S&amp;S Черешня</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_67">Кордиал S&amp;S Грейпфрут - Брусника</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_102">Кордиал S&amp;S Черная смородина - Гранат</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_124">Кордиал S&amp;S Бузина - Цитрус</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_157">Кордиал S&amp;S Арбуз - Виноград - Мята</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_183">Кордиал S&amp;S Смородина-Корица-Шалфей</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_213">Кордиал S&amp;S Вишня-Апельсин-Корица</a></li>
+<li><span class="tag">Ягодные</span><a href="#Ягодные_243">Кордиал S&amp;S Кизил - Барбарис</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_1">Кордиал S&amp;S Киви - Фейхоа</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_28">Кордиал S&amp;S Ананас - Кокос</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_63">Кордиал S&amp;S Белый персик - Жасмин</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_87">Кордиал S&amp;S Манго - Маракуйя</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_117">Кордиал S&amp;S Тархун - Ананас</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_140">Кордиал S&amp;S Ананас - Базилик</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_167">Кордиал S&amp;S Груша - Карамель</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_200">Кордиал S&amp;S Киви - Яблоко</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_230">Кордиал S&amp;S Киви</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_258">Кордиал S&amp;S Банан - Клубника - Ваниль</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_287">Кордиал S&amp;S Яблоко - Дыня - Роза</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_324">Кордиал S&amp;S Личи - Ревень</a></li>
+<li><span class="tag">Фруктовые</span><a href="#Фруктовые_354">Кордиал S&amp;S Голубые Гавайи (Ананас - Апельсин - Кокос)</a></li>
+<li><span class="tag">Цитрусовые</span><a href="#Цитрусовые_1">Кордиал S&amp;S Лайм - Мята</a></li>
+<li><span class="tag">Цитрусовые</span><a href="#Цитрусовые_35">Кордиал S&amp;S Грейпфрут - Розовый перец</a></li>
+<li><span class="tag">Цитрусовые</span><a href="#Цитрусовые_61">Кордиал S&amp;S Кавказский Мул (  Груша - Имбирь - Грецкий орех )</a></li>
+<li><span class="tag">Цитрусовые</span><a href="#Цитрусовые_94">Кордиал S&amp;S Тархун - Лайм</a></li>
+<li><span class="tag">Цитрусовые</span><a href="#Цитрусовые_125">Кордиал S&amp;S Мандарин</a></li>
+<li><span class="tag">Цветочно-травяные</span><a href="#Цветочно-травяные_1">Кордиал S&amp;S Саган Дайля</a></li>
+<li><span class="tag">Цветочно-травяные</span><a href="#Цветочно-травяные_28">Кордиал S&amp;S Лотос - Алое</a></li>
+<li><span class="tag">Цветочно-травяные</span><a href="#Цветочно-травяные_51">Кордиал S&amp;S Алое - Базилик</a></li>
+<li><span class="tag">Овощные/гастро</span><a href="#Овощные_гастро_1">Кордиал S&amp;S Кукуруза - Миндаль</a></li>
+<li><span class="tag">Овощные/гастро</span><a href="#Овощные_гастро_31">Кордиал S&amp;S Томат - Орегано</a></li>
+<li><span class="tag">Азиатские</span><a href="#Азиатские_1">Кордиал S&amp;S Клубника-Огурец</a></li>
+<li><span class="tag">Азиатские</span><a href="#Азиатские_28">Кордиал S&amp;S Шисо</a></li>
+<li><span class="tag">Азиатские</span><a href="#Азиатские_55">Кордиал S&amp;S Сенча-Юдзу</a></li>
+</ol>
+</div>
+<div class="card section" id="cat_Ягодные">
+<h2>Ягодные</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<ol class="cordial-list">
+<li><a href="#Ягодные_1">Кордиал S&amp;S Ежевика - Лаванда</a></li>
+<li><a href="#Ягодные_30">Кордиал S&amp;S Черешня</a></li>
+<li><a href="#Ягодные_67">Кордиал S&amp;S Грейпфрут - Брусника</a></li>
+<li><a href="#Ягодные_102">Кордиал S&amp;S Черная смородина - Гранат</a></li>
+<li><a href="#Ягодные_124">Кордиал S&amp;S Бузина - Цитрус</a></li>
+<li><a href="#Ягодные_157">Кордиал S&amp;S Арбуз - Виноград - Мята</a></li>
+<li><a href="#Ягодные_183">Кордиал S&amp;S Смородина-Корица-Шалфей</a></li>
+<li><a href="#Ягодные_213">Кордиал S&amp;S Вишня-Апельсин-Корица</a></li>
+<li><a href="#Ягодные_243">Кордиал S&amp;S Кизил - Барбарис</a></li>
+</ol>
+</div>
+<div class="card section" id="cat_Фруктовые">
+<h2>Фруктовые</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<ol class="cordial-list">
+<li><a href="#Фруктовые_1">Кордиал S&amp;S Киви - Фейхоа</a></li>
+<li><a href="#Фруктовые_28">Кордиал S&amp;S Ананас - Кокос</a></li>
+<li><a href="#Фруктовые_63">Кордиал S&amp;S Белый персик - Жасмин</a></li>
+<li><a href="#Фруктовые_87">Кордиал S&amp;S Манго - Маракуйя</a></li>
+<li><a href="#Фруктовые_117">Кордиал S&amp;S Тархун - Ананас</a></li>
+<li><a href="#Фруктовые_140">Кордиал S&amp;S Ананас - Базилик</a></li>
+<li><a href="#Фруктовые_167">Кордиал S&amp;S Груша - Карамель</a></li>
+<li><a href="#Фруктовые_200">Кордиал S&amp;S Киви - Яблоко</a></li>
+<li><a href="#Фруктовые_230">Кордиал S&amp;S Киви</a></li>
+<li><a href="#Фруктовые_258">Кордиал S&amp;S Банан - Клубника - Ваниль</a></li>
+<li><a href="#Фруктовые_287">Кордиал S&amp;S Яблоко - Дыня - Роза</a></li>
+<li><a href="#Фруктовые_324">Кордиал S&amp;S Личи - Ревень</a></li>
+<li><a href="#Фруктовые_354">Кордиал S&amp;S Голубые Гавайи (Ананас - Апельсин - Кокос)</a></li>
+</ol>
+</div>
+<div class="card section" id="cat_Цитрусовые">
+<h2>Цитрусовые</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<ol class="cordial-list">
+<li><a href="#Цитрусовые_1">Кордиал S&amp;S Лайм - Мята</a></li>
+<li><a href="#Цитрусовые_35">Кордиал S&amp;S Грейпфрут - Розовый перец</a></li>
+<li><a href="#Цитрусовые_61">Кордиал S&amp;S Кавказский Мул (  Груша - Имбирь - Грецкий орех )</a></li>
+<li><a href="#Цитрусовые_94">Кордиал S&amp;S Тархун - Лайм</a></li>
+<li><a href="#Цитрусовые_125">Кордиал S&amp;S Мандарин</a></li>
+</ol>
+</div>
+<div class="card section" id="cat_Цветочно-травяные">
+<h2>Цветочно-травяные</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<ol class="cordial-list">
+<li><a href="#Цветочно-травяные_1">Кордиал S&amp;S Саган Дайля</a></li>
+<li><a href="#Цветочно-травяные_28">Кордиал S&amp;S Лотос - Алое</a></li>
+<li><a href="#Цветочно-травяные_51">Кордиал S&amp;S Алое - Базилик</a></li>
+</ol>
+</div>
+<div class="card section" id="cat_Овощныегастро">
+<h2>Овощные/гастро</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<ol class="cordial-list">
+<li><a href="#Овощные_гастро_1">Кордиал S&amp;S Кукуруза - Миндаль</a></li>
+<li><a href="#Овощные_гастро_31">Кордиал S&amp;S Томат - Орегано</a></li>
+</ol>
+</div>
+<div class="card section" id="cat_Азиатские">
+<h2>Азиатские</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<ol class="cordial-list">
+<li><a href="#Азиатские_1">Кордиал S&amp;S Клубника-Огурец</a></li>
+<li><a href="#Азиатские_28">Кордиал S&amp;S Шисо</a></li>
+<li><a href="#Азиатские_55">Кордиал S&amp;S Сенча-Юдзу</a></li>
+</ol>
+</div>
+<div class="section">
+<h2>Ягодные</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<table>
+<tr class="cordial-header"><th id="Ягодные_1" colspan="6">Кордиал S&amp;S Ежевика - Лаванда</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lavender Spritz</td>
+<td>Кордиал S&amp;S Ежевика - Лаванда</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Веточка лаванды</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм лаванда</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lavender Gin-Tonic</td>
+<td>Кордиал S&amp;S Ежевика - Лаванда</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Веточка лаванды</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>40</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм лаванда</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lavender Aviation</td>
+<td>Кордиал S&amp;S Ежевика - Лаванда</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктельная рюмка</td>
+<td>Парфюм лаванда</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Мараскино ликер</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lavender Bramble</td>
+<td>Кордиал S&amp;S Ежевика - Лаванда</td>
+<td>40</td>
+<td>Стир</td>
+<td>Рокс</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Краш лёд</td>
+<td>Парфюм лаванда</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Hedgerow Sling</td>
+<td>Кордиал S&amp;S Ежевика - Лаванда</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм лаванда</td>
+</tr>
+<tr>
+<td></td>
+<td>Фернет бранка</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 1</td>
+<td>Кордиал S&amp;S Ежевика - Лаванда</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Веточка лаванды</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ежевика</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм лаванда</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 2</td>
+<td>Кордиал S&amp;S Ежевика - Лаванда</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Веточка лаванды</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>100</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм лаванда</td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_30" colspan="6">Кордиал S&amp;S Черешня</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Cherry Sour</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>45</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Пудра клубника</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>45</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Cherry Espresso Martini</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктельная рюмка</td>
+<td>3 зернышка кофе</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Эспрессо</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Blood and Sand</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>30</td>
+<td>Шейк</td>
+<td>Коктельная рюмка</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Шотландский виски</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсин сок</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Philosophy</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>30</td>
+<td>Шейк</td>
+<td>Коктельная рюмка</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Амаретто</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Порто Руби</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сок ананас</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Cherry Boulevardier</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>30</td>
+<td>Стир</td>
+<td>Рокс</td>
+<td>Слайс апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Herbal Highball</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Слайс апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Ягермайстер</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Лагер </td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 1</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре вишня</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 2</td>
+<td>Кордиал S&amp;S Черешня</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_67" colspan="6">Кордиал S&amp;S Грейпфрут - Брусника</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lingonberry Cape Codder</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>S&amp;S Caribaldi</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсиновый фреш</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Grapefruit Buck&#x27;s Fizz</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>30</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Вейдж грейпфрута</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>100</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсиновый фреш</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lingonberry Paloma</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>30</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Вейдж грейпфрута</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>100</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Грейпфрут тоник</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>L&amp;G Gimlet</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>50</td>
+<td>Стир</td>
+<td>Коктельная рюмка</td>
+<td>Цедра грейпфрут</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>40</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lingonberry Cosmo</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктельная рюмка</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Цитрусовая водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Трипл сек</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 1</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре клюква</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Ягоды клюквы</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 2</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Брусничный Эспрессо Тоник</td>
+<td>Кордиал S&amp;S Грейпфрут - Брусника</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Эспрессо</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_102" colspan="6">Кордиал S&amp;S Черная смородина - Гранат</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pomegranate Negroni</td>
+<td>Кордиал S&amp;S Черная смородина - Гранат</td>
+<td>20</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pomegranate Fiero</td>
+<td>Кордиал S&amp;S Черная смородина - Гранат</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Фиеро</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Currant Spritz</td>
+<td>Кордиал S&amp;S Черная смородина - Гранат</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Зерна граната</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 1</td>
+<td>Кордиал S&amp;S Черная смородина - Гранат</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре черная смородина</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 2</td>
+<td>Кордиал S&amp;S Черная смородина - Гранат</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_124" colspan="6">Кордиал S&amp;S Бузина - Цитрус</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Elderflower Highball</td>
+<td>Кордиал S&amp;S Бузина - Цитрус</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайма</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Elderflower Spritz</td>
+<td>Кордиал S&amp;S Бузина - Цитрус</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Мята листья</td>
+</tr>
+<tr>
+<td></td>
+<td>Лисьтя мяты</td>
+<td>7 шт</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>70</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Elderflower G&amp;T</td>
+<td>Кордиал S&amp;S Бузина - Цитрус</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Left Bank Martini</td>
+<td>Кордиал S&amp;S Бузина - Цитрус</td>
+<td>30</td>
+<td>Стир</td>
+<td>Коктельная рюмка</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Белое Вино ( Шардоне ) </td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сухой вермут </td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Бузина - Цитрус</td>
+<td>Кордиал S&amp;S Бузина - Цитрус</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре личи</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Бузина - Цитрус - Личи</td>
+<td>Кордиал S&amp;S Бузина - Цитрус</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Elderflower Spritz N/A</td>
+<td>Кордиал S&amp;S Бузина - Цитрус</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин Zero</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Мята листья</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое Zero</td>
+<td>70</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Лисьтя мяты</td>
+<td>7 шт</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_157" colspan="6">Кордиал S&amp;S Арбуз - Виноград - Мята</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Watermelon - Grape Spritz</td>
+<td>Кордиал S&amp;S Арбуз - Виноград - Мята</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Зеленый виноград</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Enzoni</td>
+<td>Кордиал S&amp;S Арбуз - Виноград - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>40</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Зеленый виноград</td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>40</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Dusk Cocktail</td>
+<td>Кордиал S&amp;S Арбуз - Виноград - Мята</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктельная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сахар сироп</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Watermelon - Grape G&amp;T</td>
+<td>Кордиал S&amp;S Арбуз - Виноград - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Арбуз - Виноград - Мята</td>
+<td>Кордиал S&amp;S Арбуз - Виноград - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре арбуз</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Арбуз - Виноград - Мята</td>
+<td>Кордиал S&amp;S Арбуз - Виноград - Мята</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_183" colspan="6">Кордиал S&amp;S Смородина-Корица-Шалфей</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Currant Cinnamon Spritz</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>15</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Currant Cinnamon Sour</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>45</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>45</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Currant Cinnamon Boulevardier</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>30</td>
+<td>Стир</td>
+<td>Рокс</td>
+<td>Слайс апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Currant Cinnamon Highball</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Слайс апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Виски</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Currant Cinnamon G&amp;T</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 1</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре черная смородина</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 2</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_213" colspan="6">Кордиал S&amp;S Вишня-Апельсин-Корица</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Spritz</td>
+<td>Кордиал S&amp;S Вишня-Апельсин-Корица</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>15</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sour</td>
+<td>Кордиал S&amp;S Вишня-Апельсин-Корица</td>
+<td>45</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>45</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Boulevardier</td>
+<td>Кордиал S&amp;S Смородина-Корица-Шалфей</td>
+<td>30</td>
+<td>Стир</td>
+<td>Рокс</td>
+<td>Слайс апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Highball</td>
+<td>Кордиал S&amp;S Вишня-Апельсин-Корица</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Слайс апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Виски</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td> G&amp;T</td>
+<td>Кордиал S&amp;S Вишня-Апельсин-Корица</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 1</td>
+<td>Кордиал S&amp;S Вишня-Апельсин-Корица</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре вишня</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад 2</td>
+<td>Кордиал S&amp;S Вишня-Апельсин-Корица</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Ягодные_243" colspan="6">Кордиал S&amp;S Кизил - Барбарис</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Barberry Spritz</td>
+<td>Кордиал S&amp;S Кизил - Барбарис</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Tiziano</td>
+<td>Кордиал S&amp;S Кизил - Барбарис</td>
+<td>45</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>45</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Barberry Sour</td>
+<td>Кордиал S&amp;S Кизил - Барбарис</td>
+<td>45</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>45</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Dogwood Americano</td>
+<td>Кордиал S&amp;S Кизил - Барбарис</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Кизил - Барбарис - Личи</td>
+<td>Кордиал S&amp;S Кизил - Барбарис</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре личи</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Кизил - Барбарис</td>
+<td>Кордиал S&amp;S Кизил - Барбарис</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+</table></div>
+<div class="section">
+<h2>Фруктовые</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<table>
+<tr class="cordial-header"><th id="Фруктовые_1" colspan="6">Кордиал S&amp;S Киви - Фейхоа</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>K-F Margarita</td>
+<td>Кордиал S&amp;S Киви - Фейхоа</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Kiwi Collins</td>
+<td>Кордиал S&amp;S Киви - Фейхоа</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре киви</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Feijoa Fizz</td>
+<td>Кордиал S&amp;S Киви - Фейхоа</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Огурец</td>
+<td>3 слайса</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Feijoa Kiwi Spritz</td>
+<td>Кордиал S&amp;S Киви - Фейхоа</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Киви - Фейхоа</td>
+<td>Кордиал S&amp;S Киви - Фейхоа</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре киви</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Киви - Фейхоа 2</td>
+<td>Кордиал S&amp;S Киви - Фейхоа</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_28" colspan="6">Кордиал S&amp;S Ананас - Кокос</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Coconut Jungle Bird</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром Темный</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Creamy Pina Colada</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Лист бамбука</td>
+</tr>
+<tr>
+<td></td>
+<td>Светлый ром</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Сок ананас</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сливки 10%</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Champagne Pina Colada</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Светлый ром</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре кокос</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Coconut Martini</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Bahamas Daiquiri</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Чипс ананас</td>
+</tr>
+<tr>
+<td></td>
+<td>Золотой ром</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ананас</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Ананас - Кокос</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Чипс ананас</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре кокос</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Ананас - Кокос 2</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Безалкогольная Колада</td>
+<td>Кордиал S&amp;S Ананас - Кокос</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Лист бамбука</td>
+</tr>
+<tr>
+<td></td>
+<td>Сливки 10%</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_63" colspan="6">Кордиал S&amp;S Белый персик - Жасмин</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Jasmine White Lady</td>
+<td>Кордиал S&amp;S Белый персик - Жасмин</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсиновый ликер</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Jasmine Bellini</td>
+<td>Кордиал S&amp;S Белый персик - Жасмин</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Винный</td>
+<td>парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре персик</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Peach Spritz</td>
+<td>Кордиал S&amp;S Белый персик - Жасмин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Ликер персик</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Персик - Жасмин </td>
+<td>Кордиал S&amp;S Белый персик - Жасмин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре белый персик</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Персик - Жасмин 2</td>
+<td>Кордиал S&amp;S Белый персик - Жасмин</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_87" colspan="6">Кордиал S&amp;S Манго - Маракуйя</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mango Porn Star Martini</td>
+<td>Кордиал S&amp;S Манго - Маракуйя</td>
+<td>50</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>парфюм ЭФИРЫ - Маракуйя</td>
+</tr>
+<tr>
+<td></td>
+<td>Ванильная водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре маракуйя</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Passion Margarita</td>
+<td>Кордиал S&amp;S Манго - Маракуйя</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>парфюм ЭФИРЫ - Маракуйя</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Трипл сек</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Want to Daddy?</td>
+<td>Кордиал S&amp;S Манго - Маракуйя</td>
+<td>50</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>парфюм ЭФИРЫ - Манго</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре персик</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Passion Spritz</td>
+<td>Кордиал S&amp;S Манго - Маракуйя</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>парфюм ЭФИРЫ - Маракуйя</td>
+</tr>
+<tr>
+<td></td>
+<td>Ликер маракуйя</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Манго - Маракуйя</td>
+<td>Кордиал S&amp;S Манго - Маракуйя</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре манго </td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>парфюм ЭФИРЫ - Манго</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Манго - Маракуйя 2</td>
+<td>Кордиал S&amp;S Манго - Маракуйя</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>парфюм ЭФИРЫ - Маракуйя</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_117" colspan="6">Кордиал S&amp;S Тархун - Ананас</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Tarragon Spritz</td>
+<td>Кордиал S&amp;S Тархун - Ананас</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>The Brassy Monkey</td>
+<td>Кордиал S&amp;S Тархун - Ананас</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Трипл сек</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Tarragon Daiquiri</td>
+<td>Кордиал S&amp;S Тархун - Ананас</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Лайм кружок</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Тархун - Ананас</td>
+<td>Кордиал S&amp;S Тархун - Ананас</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ананас</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Тархун - Ананас 2</td>
+<td>Кордиал S&amp;S Тархун - Ананас</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_140" colspan="6">Кордиал S&amp;S Ананас - Базилик</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pineapple Basil Spritz</td>
+<td>Кордиал S&amp;S Ананас - Базилик</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Basil Fizz</td>
+<td>Кордиал S&amp;S Ананас - Базилик</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pineapple Green Park</td>
+<td>Кордиал S&amp;S Ананас - Базилик</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сельдереевый биттер</td>
+<td>3 дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pineapple Basil Smash</td>
+<td>Кордиал S&amp;S Ананас - Базилик</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ананас</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Ананас - Базилик</td>
+<td>Кордиал S&amp;S Ананас - Базилик</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ананас</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Ананас - Базилик 2</td>
+<td>Кордиал S&amp;S Ананас - Базилик</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_167" colspan="6">Кордиал S&amp;S Груша - Карамель</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pear Spritz</td>
+<td>Кордиал S&amp;S Груша - Карамель</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Карамель</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pear Whiskey Sour</td>
+<td>Кордиал S&amp;S Груша - Карамель</td>
+<td>50</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Карамель</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pear Sherry Tonic</td>
+<td>Кордиал S&amp;S Груша - Карамель</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Карамель</td>
+</tr>
+<tr>
+<td></td>
+<td>Херес Фино</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pear Long Island Ice Tea</td>
+<td>Кордиал S&amp;S Груша - Карамель</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Карамель</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td>Кружок лимон 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Трипл сек</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кола</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Груша - Карамель</td>
+<td>Кордиал S&amp;S Груша - Карамель</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре груша</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Карамель</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Груша - Карамель 2</td>
+<td>Кордиал S&amp;S Груша - Карамель</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Карамель</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Шмель</td>
+<td>Кордиал S&amp;S Груша - Карамель</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсиновый сок</td>
+<td>100</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Карамель</td>
+</tr>
+<tr>
+<td></td>
+<td>Эспрессо</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_200" colspan="6">Кордиал S&amp;S Киви - Яблоко</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Apple and Kiwi Spritz</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Apple and Kiwi Highball</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Apple and Kiwi Tini</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ялочный ликёр</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ялоко зеленое </td>
+<td>1 . 4 часть</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Apple and Kiwi Basil Smash</td>
+<td>Кордиал S&amp;S Ананас - Базилик</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Базилик свежий </td>
+<td>4 листика</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Apple and Kiwi Gimlet</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Киви - Яблоко</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре киви</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Киви - Яблоко 2</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_230" colspan="6">Кордиал S&amp;S Киви</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Kiwi Basil Gin Smash</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>шейк</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Базилик свежий </td>
+<td>6 лист</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Kiwi Spritz</td>
+<td>Кордиал S&amp;S Киви </td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Kiwi Margharita</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Трипл сек</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Kiwi Highball</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ликер Бузина</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Киви - Клубника</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре клубника</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Киви 2</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_258" colspan="6">Кордиал S&amp;S Банан - Клубника - Ваниль</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>BSV Spritz</td>
+<td>Кордиал S&amp;S Банан - Клубника - Ваниль</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>BSV Gin Fizz</td>
+<td>Кордиал S&amp;S Банан - Клубника - Ваниль</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сливки 20 %</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Banana Bernice</td>
+<td>Кордиал S&amp;S Банан - Клубника - Ваниль</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин </td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Асент</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Strawberry Bahama Mama</td>
+<td>Кордиал S&amp;S Банан - Клубника - Ваниль</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Малибу</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ананасовый сок</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Тропический лимонад</td>
+<td>Кордиал S&amp;S Банан - Клубника - Ваниль</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Лист бамбука</td>
+</tr>
+<tr>
+<td></td>
+<td>Ананасовый сок</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Кокосовое молоко</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Банан - Клубника - Ваниль</td>
+<td>Кордиал S&amp;S Банан - Клубника - Ваниль</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_287" colspan="6">Кордиал S&amp;S Яблоко - Дыня - Роза</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Melon Apple Spritz</td>
+<td>Кордиал S&amp;S Яблоко - Дыня - Роза</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Hand Granade</td>
+<td>Кордиал S&amp;S Яблоко - Дыня - Роза</td>
+<td>50</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ананасовый сок</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mexican Melon Ball</td>
+<td>Кордиал S&amp;S Яблоко - Дыня - Роза</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Репосадо</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсин фреш</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>25</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Melon Apple Fizz</td>
+<td>Кордиал S&amp;S Яблоко - Дыня - Роза</td>
+<td>40</td>
+<td>шейк</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсиновый биттер</td>
+<td>2дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>S&amp;S Japanese Slipper</td>
+<td>Кордиал S&amp;S Яблоко - Дыня - Роза</td>
+<td>30</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Трипл сек</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ликер дыня </td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Лимон сок </td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Яблоко - Дыня - Роза</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре дыня</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Яблоко - Дыня - Роза 2</td>
+<td>Кордиал S&amp;S Киви - Яблоко</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_324" colspan="6">Кордиал S&amp;S Личи - Ревень</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lychee Rubarb Spritz</td>
+<td>Кордиал S&amp;S Личи - Ревень</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Ревень</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Rubarb French 75</td>
+<td>Кордиал S&amp;S Личи - Ревень</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Ревень</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lychee Martini</td>
+<td>Кордиал S&amp;S Личи - Ревень</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Ревень</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сухой вермут</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Rhubarb Collins</td>
+<td>Кордиал S&amp;S Личи - Ревень</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Ревень</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Rose Cobbler</td>
+<td>Кордиал S&amp;S Личи - Ревень</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Ревень</td>
+</tr>
+<tr>
+<td></td>
+<td>Херес фино</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td>Мята бошка</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Личи - Ревень</td>
+<td>Кордиал S&amp;S Личи - Ревень</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре личи</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Ревень</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Личи - Ревень 2</td>
+<td>Кордиал S&amp;S Личи - Ревень</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Ревень</td>
+</tr>
+<tr class="cordial-header"><th id="Фруктовые_354" colspan="6">Кордиал S&amp;S Голубые Гавайи (Ананас - Апельсин - Кокос)</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Blue Spritz</td>
+<td>Кордиал S&amp;S Голубые Гавайи</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Blue Hawaii</td>
+<td>Кордиал S&amp;S Голубые Гавайи</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Лист бамбука</td>
+</tr>
+<tr>
+<td></td>
+<td>Ананасовый сок</td>
+<td>60</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Blue Lagoon</td>
+<td>Кордиал S&amp;S Голубые Гавайи</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Кружок лимон 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Спрайт</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Blue Lady</td>
+<td>Кордиал S&amp;S Голубые Гавайи</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Личи Гавайи</td>
+<td>Кордиал S&amp;S Голубые Гавайи</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре личи</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Голубые Гавайи</td>
+<td>Кордиал S&amp;S Голубые Гавайи</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+</table></div>
+<div class="section">
+<h2>Цитрусовые</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<table>
+<tr class="cordial-header"><th id="Цитрусовые_1" colspan="6">Кордиал S&amp;S Лайм - Мята</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mint Lime Spritz</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Мята свежая</td>
+<td>6 лист</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mint Lime Gimlet</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mojito</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый </td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Мята свежая</td>
+<td>6 лист</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>G-T Mint Lime</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>70</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mint Julep</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>30</td>
+<td>Билд</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>60</td>
+<td></td>
+<td></td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Биттер Ангостура</td>
+<td>3дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Безалкогольный Мохито</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ананас</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Лист бамбук</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Лайм - Мята</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Лайм - Мята - Ананас</td>
+<td>Кордиал S&amp;S Лайм - Мята</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре личи</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Лист бамбук</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Цитрусовые_35" colspan="6">Кордиал S&amp;S Грейпфрут - Розовый перец</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Grapefruit Spritz</td>
+<td>Кордиал S&amp;S Грейпфрут - Розовый перец</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td>Вэйдж грейпфрут</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Spicy Paloma</td>
+<td>Кордиал S&amp;S Грейпфрут - Розовый перец</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Вэйдж грейпфрут</td>
+</tr>
+<tr>
+<td></td>
+<td>Грейпфрут тоник</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Salty Dog</td>
+<td>Кордиал S&amp;S Грейпфрут - Розовый перец</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Вэйдж грейпфрут</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Pink Pepper Plane</td>
+<td>Кордиал S&amp;S Грейпфрут - Розовый перец</td>
+<td>50</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Апероль</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Грейпфрут - Розовый перец </td>
+<td>Кордиал S&amp;S Грейпфрут - Розовый перец</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Вэйдж грейпфрут</td>
+</tr>
+<tr>
+<td></td>
+<td>Грейпфрутовый фреш</td>
+<td>40</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>120</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Грейпфрут - Розовый перец 2</td>
+<td>Кордиал S&amp;S Грейпфрут - Розовый перец</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Вэйдж грейпфрут</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Цитрусовые_61" colspan="6">Кордиал S&amp;S Кавказский Мул (  Груша - Имбирь - Грецкий орех )</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td> Spritz</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sour</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>45</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>45</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Walnut Daiquri</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>45</td>
+<td>Стир</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый </td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Caucasian Penicillin</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Ирландский виски</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Островной виски</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Chacha Mule</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>40</td>
+<td>Билд</td>
+<td>Рокс</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Чача</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Грецкий орех / Пекан</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Dark &amp; Stormy</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Темный ром</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Биттер Ангостура</td>
+<td>3дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Груша - Имбирь - Грецкий орех</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре груша</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Кавказский Мул</td>
+<td>Кордиал S&amp;S Кавказский Мул</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr class="cordial-header"><th id="Цитрусовые_94" colspan="6">Кордиал S&amp;S Тархун - Лайм</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td> Tarragon Spritz</td>
+<td>Кордиал S&amp;S Тархун - Лайм</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Tarragon Gimlet</td>
+<td>Кордиал S&amp;S Тархун - Лайм</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Tarragon Mojito</td>
+<td>Кордиал S&amp;S Тархун - Лайм</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый </td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Мята свежая</td>
+<td>6 лист</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>G-T Tarragon Lime</td>
+<td>Кордиал S&amp;S Тархун - Лайм</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Кружок лайм 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>70</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Strawberry Tarragon Margarita</td>
+<td>Кордиал S&amp;S Тархун - Лайм</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила Бланко</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Пудра клубника</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре клубника</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сок лайма</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Тархун - Яблоко - Лайм</td>
+<td>Кордиал S&amp;S Тархун - Лайм</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре зеленое яблоко</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Тархун - Лайм</td>
+<td>Кордиал S&amp;S Тархун - Лайм</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Цитрусовые_125" colspan="6">Кордиал S&amp;S Мандарин</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td> Mandarin Spritz</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок апельсина </td>
+</tr>
+<tr>
+<td></td>
+<td>Апероль</td>
+<td>40</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mandarin NY Sour</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>45</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Пудра клубника</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>45</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr>
+<td></td>
+<td>Красное вино</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Bonaparte Cocktail</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апельсина </td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr>
+<td></td>
+<td>Эспрессо</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mandarito</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апельсина </td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый </td>
+<td>40</td>
+<td></td>
+<td></td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Мята свежая</td>
+<td>6 лист</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Italian Job</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>50</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Кружок апельсина </td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>40</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Mandarin Fizz</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апельсина </td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Мята свежая</td>
+<td>6 лист</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Мандарин - Мята</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Мята свежая</td>
+<td>6 лист</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Мандарин</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Мандарин Эспрессо Тоник</td>
+<td>Кордиал S&amp;S Мандарин</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мандарин</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре зеленое яблоко</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table></div>
+<div class="section">
+<h2>Цветочно-травяные</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<table>
+<tr class="cordial-header"><th id="Цветочно-травяные_1" colspan="6">Кордиал S&amp;S Саган Дайля</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sagan Daila Spritz</td>
+<td>Кордиал S&amp;S Саган Дайля</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sagan Daila Americano</td>
+<td>Кордиал S&amp;S Саган Дайля</td>
+<td>30</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок апелсина</td>
+</tr>
+<tr>
+<td></td>
+<td>Красный вермут</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Кампари</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>S.D. Fernet &amp; Cola</td>
+<td>Кордиал S&amp;S Саган Дайля</td>
+<td>30</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Фернет бранка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Кола</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sagan Sherry Cobbler</td>
+<td>Кордиал S&amp;S Саган Дайля</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Винный</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Херес фино</td>
+<td>60</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре клубника</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Саган Дайля - Черная Смородина</td>
+<td>Кордиал S&amp;S Саган Дайля</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре черная смородина</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Саган Дайля </td>
+<td>Кордиал S&amp;S Саган Дайля</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="cordial-header"><th id="Цветочно-травяные_28" colspan="6">Кордиал S&amp;S Лотос - Алое</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lotus Spritz</td>
+<td>Кордиал S&amp;S Лотос - Алое</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lotus Fiero &amp; Tonic</td>
+<td>Кордиал S&amp;S Лотос - Алое</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок апелсина</td>
+</tr>
+<tr>
+<td></td>
+<td>Мартини фиеро</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lotus Knickerbocker</td>
+<td>Кордиал S&amp;S Лотос - Алое</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре малина</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Трипл сек</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lotus Martini</td>
+<td>Кордиал S&amp;S Лотос - Алое</td>
+<td>30</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Сухой вермут</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Лотос - Алое</td>
+<td>Кордиал S&amp;S Лотос - Алое</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="cordial-header"><th id="Цветочно-травяные_51" colspan="6">Кордиал S&amp;S Алое - Базилик</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Lotus Spritz</td>
+<td>Кордиал S&amp;S Алое - Базилик</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Aloe Basil Gimlet</td>
+<td>Кордиал S&amp;S Лотос - Алое</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Golden Geisha</td>
+<td>Кордиал S&amp;S Алое - Базилик</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре малина</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Яблочный сок</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Golden Geisha</td>
+<td>Кордиал S&amp;S Алое - Базилик</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Кафир лайм</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка на кафир лайме</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Саке</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Алое - Базилик - Клубника</td>
+<td>Кордиал S&amp;S Алое - Базилик</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре клубника</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Алое - Базилик - Огурец</td>
+<td>Кордиал S&amp;S Алое - Базилик</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr>
+<td></td>
+<td>Оурец</td>
+<td>4 слайса</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table></div>
+<div class="section">
+<h2>Овощные гастро</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<table>
+<tr class="cordial-header"><th id="Овощные_гастро_1" colspan="6">Кордиал S&amp;S Кукуруза - Миндаль</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Corn Spritz</td>
+<td>Кордиал S&amp;S Кукуруза - Миндаль</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Бурбон</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Corn Amaretto Sour</td>
+<td>Кордиал S&amp;S Кукуруза - Миндаль</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Амаретто</td>
+<td>40</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Army and Navy</td>
+<td>Кордиал S&amp;S Кукуруза - Миндаль</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Биттер Ангостура</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Corn Amaretto Sour</td>
+<td>Кордиал S&amp;S Кукуруза - Миндаль</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Скотч</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Апельсиновый фреш</td>
+<td>60</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Кукуруза - Миндаль - Клубника</td>
+<td>Кордиал S&amp;S Кукуруза - Миндаль</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре клубника</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Кукуруза - Миндаль</td>
+<td>Кордиал S&amp;S Кукуруза - Миндаль</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Кукуруза - Миндаль - Клубника</td>
+<td>Кордиал S&amp;S Кукуруза - Миндаль</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре имбирь </td>
+<td>5</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Джиджер эль</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Бузина</td>
+</tr>
+<tr class="cordial-header"><th id="Овощные_гастро_31" colspan="6">Кордиал S&amp;S Томат - Орегано</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>T+A Spritz</td>
+<td>Кордиал S&amp;S Томат - Орегано</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Нити чили</td>
+</tr>
+<tr>
+<td></td>
+<td>Апероль</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Клубничный соджу</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>100</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сок лимона</td>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Red Snapper Sour</td>
+<td>Кордиал S&amp;S Томат - Орегано</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Нити чили</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Табаско</td>
+<td>2дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ворчестер</td>
+<td>3дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Basil Bloody Mary</td>
+<td>Кордиал S&amp;S Томат - Орегано</td>
+<td>80</td>
+<td>Фроулинг</td>
+<td>Хайбол</td>
+<td>Нити чили</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Табаско</td>
+<td>2дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ворчестер</td>
+<td>3дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Соль и перец</td>
+<td>по 1 щепотке</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>75 Is Alive</td>
+<td>Кордиал S&amp;S Томат - Орегано</td>
+<td>40</td>
+<td>Стир</td>
+<td>Винный</td>
+<td>Нити чили</td>
+</tr>
+<tr>
+<td></td>
+<td>Текила бланко</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Томат - Орегано</td>
+<td>Кордиал S&amp;S Томат - Орегано</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Нити чили</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Клубника - Томат - Орегано</td>
+<td>Кордиал S&amp;S Томат - Орегано</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Нити чили</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре клубника</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джиджер эль</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table></div>
+<div class="section">
+<h2>Азиатские</h2>
+<div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
+<table>
+<tr class="cordial-header"><th id="Азиатские_1" colspan="6">Кордиал S&amp;S Клубника-Огурец</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Strawberry Spritz</td>
+<td>Кордиал S&amp;S Клубника-Огурец</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Апероль</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Strawberry Gin Sour</td>
+<td>Кордиал S&amp;S Клубника-Огурец</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>40</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Strawberry G/A</td>
+<td>Кордиал S&amp;S Клубника-Огурец</td>
+<td>40</td>
+<td>Стир</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин </td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Асент</td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Strawberry Bahama Mama</td>
+<td>Кордиал S&amp;S Клубника-Огурец</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Ром светлый</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Малибу</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Ананасовый сок</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Тропический лимонад</td>
+<td>Кордиал S&amp;S Клубника-Огурец</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Хайбол</td>
+<td>Лист бамбука</td>
+</tr>
+<tr>
+<td></td>
+<td>Ананасовый сок</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Кокосовое молоко</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Клубника-Огурец</td>
+<td>Кордиал S&amp;S Клубника-Огурец</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr class="cordial-header"><th id="Азиатские_28" colspan="6">Кордиал S&amp;S Шисо</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Shiso Spritz</td>
+<td>Кордиал S&amp;S Шисо</td>
+<td>40</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Парфюм ЭФИРЫ - Мята</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>80</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Shiso Fizz</td>
+<td>Кордиал S&amp;S Шисо</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Водка</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая </td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Shiso Green Park</td>
+<td>Кордиал S&amp;S Шисо</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Коктейльная рюмка</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сельдереевый биттер</td>
+<td>3 дэш</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Shiso Pineapple Basil Smash</td>
+<td>Кордиал S&amp;S Шисо</td>
+<td>40</td>
+<td>Шейк</td>
+<td>Рокс</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ананас</td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Пенообразователь PENA</td>
+<td>3 капли</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Ананас - Шисо</td>
+<td>Кордиал S&amp;S Шисо</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре ананас</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Шисо</td>
+<td>Кордиал S&amp;S Шисо</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Базилик</td>
+</tr>
+<tr class="cordial-header"><th id="Азиатские_55" colspan="6">Кордиал S&amp;S Сенча-Юдзу</th></tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sencha Yuzu Highball</td>
+<td>Кордиал S&amp;S Сенча-Юдзу</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайма</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sencha Yuzu Spritz</td>
+<td>Кордиал S&amp;S Сенча-Юдзу</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Мята листья</td>
+</tr>
+<tr>
+<td></td>
+<td>Лисьтя мяты</td>
+<td>7 шт</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое</td>
+<td>70</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sencha Yuzu G&amp;T</td>
+<td>Кордиал S&amp;S Сенча-Юдзу</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Тоник</td>
+<td>75</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sencha Yuzu Martini</td>
+<td>Кордиал S&amp;S Сенча-Юдзу</td>
+<td>30</td>
+<td>Стир</td>
+<td>Коктельная рюмка</td>
+<td>Парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин</td>
+<td>50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Белое Вино ( Шардоне ) </td>
+<td>30</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Сухой вермут </td>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Юдзу - Маракуйя</td>
+<td>Кордиал S&amp;S Сенча-Юдзу</td>
+<td>40</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Мята бошка</td>
+</tr>
+<tr>
+<td></td>
+<td>Пюре маракуйя</td>
+<td>30</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Цедра лимона</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>130</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Лимонад Сенча-Юдзу</td>
+<td>Кордиал S&amp;S Сенча-Юдзу</td>
+<td>50</td>
+<td>Билд</td>
+<td>Хайбол</td>
+<td>Цедра апельсин</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>150</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr class="recipe-header">
+<th>название</th>
+<th>ингредиенты</th>
+<th>кол-во</th>
+<th>метод</th>
+<th>бокал</th>
+<th>украшение</th>
+</tr>
+<tr>
+<td>Sencha Yuzu N/A</td>
+<td>Кордиал S&amp;S Сенча-Юдзу</td>
+<td>50</td>
+<td>Билд</td>
+<td>Винный</td>
+<td>Кружок лайма 2 шт</td>
+</tr>
+<tr>
+<td></td>
+<td>Джин Zero</td>
+<td>20</td>
+<td></td>
+<td>Кубик лед</td>
+<td>Мята листья</td>
+</tr>
+<tr>
+<td></td>
+<td>Содовая</td>
+<td>20</td>
+<td></td>
+<td></td>
+<td>Парфюм ЭФИРЫ - Жасмин</td>
+</tr>
+<tr>
+<td></td>
+<td>Игристое Zero</td>
+<td>70</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Лисьтя мяты</td>
+<td>7 шт</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table></div>
+</div></body></html>
