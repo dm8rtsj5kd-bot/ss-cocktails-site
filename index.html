@@ -2,16 +2,17 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>S&S Cocktails 2025 — Кордиалы и коктейли</title>
+  <title>S&S Cocktails 2025 — кордиалы и коктейли для кейтеринга</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #f4f5f7;
+      --bg: #eef0f4;
       --card-bg: #ffffff;
       --accent: #1565c0;
       --accent-soft: #e3f2fd;
       --border-soft: #d5d7de;
       --border-strong: #b0b3c0;
-      --text-main: #22252f;
+      --text-main: #232633;
       --text-muted: #6b6f7b;
     }
     * { box-sizing: border-box; }
@@ -21,47 +22,47 @@
       color: var(--text-main);
       margin: 0;
       padding: 0;
+      font-size: 15px;
     }
     .wrapper {
-      max-width: 1120px;
+      max-width: 1160px;
       margin: 0 auto;
-      padding: 24px 16px 48px;
+      padding: 24px 16px 56px;
     }
     h1 {
-      font-size: 28px;
-      margin-bottom: 4px;
+      font-size: 30px;
+      margin-bottom: 6px;
       letter-spacing: 0.03em;
     }
     h2 {
-      margin: 32px 0 12px;
+      margin: 32px 0 14px;
       font-size: 22px;
     }
     .intro {
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       font-size: 14px;
       color: var(--text-muted);
     }
     .card {
       background: var(--card-bg);
-      border-radius: 16px;
-      padding: 18px 20px;
-      box-shadow: 0 10px 30px rgba(15,17,20,0.06);
-      border: 1px solid rgba(176,179,192,0.4);
+      border-radius: 18px;
+      padding: 20px 22px;
+      box-shadow: 0 14px 40px rgba(15,17,20,0.10);
+      border: 1px solid rgba(176,179,192,0.5);
       margin-bottom: 32px;
     }
-    .section { margin-bottom: 40px; }
-    /* Сетка категорий */
+    .section { margin-bottom: 48px; }
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
       margin-top: 10px;
     }
     .category-card {
-      background: #f8f9ff;
-      border-radius: 12px;
-      padding: 10px 12px;
-      border: 1px solid rgba(176,179,192,0.6);
+      background: #f7f8ff;
+      border-radius: 14px;
+      padding: 10px 13px;
+      border: 1px solid rgba(176,179,192,0.7);
       transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
     }
     .category-card.main {
@@ -72,35 +73,34 @@
       display: block;
       color: var(--text-main);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
     }
     .category-card small {
       display: block;
       margin-top: 3px;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-muted);
     }
     .category-card:hover {
       background: #ffffff;
-      box-shadow: 0 8px 20px rgba(15,17,20,0.08);
-      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(15,17,20,0.10);
+      transform: translateY(-2px);
     }
-    /* Списки кордиалов */
     .cordial-list {
       columns: 2;
-      column-gap: 32px;
-      padding-left: 18px;
-      font-size: 14px;
-      margin: 8px 0 0;
+      column-gap: 36px;
+      padding-left: 20px;
+      font-size: 15px;
+      margin: 10px 0 0;
     }
     .cordial-list li {
       break-inside: avoid;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
     .tag {
       display: inline-block;
-      padding: 2px 8px;
+      padding: 2px 9px;
       border-radius: 999px;
       background: var(--accent-soft);
       color: var(--accent);
@@ -113,44 +113,59 @@
     }
     a:hover { text-decoration: underline; }
     .back-to-top-inline {
-      font-size: 12px;
+      font-size: 13px;
       margin: 4px 0 12px;
       color: var(--text-muted);
     }
     .back-to-top-inline a { color: var(--text-muted); }
-    /* Фиксированная кнопка "наверх" */
     .to-top {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
-      padding: 8px 12px;
+      right: 22px;
+      bottom: 22px;
+      padding: 12px 18px;
       border-radius: 999px;
-      background: rgba(34,37,47,0.9);
+      background: var(--accent);
       color: #ffffff;
-      font-size: 12px;
+      font-size: 15px;
+      font-weight: 600;
       text-decoration: none;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      z-index: 100;
+      box-shadow: 0 10px 30px rgba(21,101,192,0.55);
+      opacity: 0.85;
       backdrop-filter: blur(6px);
+      z-index: 100;
+      transition: all 0.25s ease;
     }
     .to-top:hover {
-      background: rgba(21,101,192,0.95);
+      opacity: 1;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(21,101,192,0.65);
       text-decoration: none;
+    }
+    .sheet-block {
+      margin-bottom: 40px;
+      padding: 18px 20px 6px;
+      border-radius: 18px;
+      background: #f7f8fb;
+      border: 1px solid rgba(176,179,192,0.5);
+      box-shadow: 0 10px 32px rgba(15,17,20,0.08);
+    }
+    .sheet-block h2 {
+      margin-top: 0;
+      margin-bottom: 4px;
     }
     table {
       width: 100%;
       border-collapse: separate;
       border-spacing: 0;
-      margin: 12px 0 28px;
-      font-size: 13px;
+      margin: 20px 0 30px;
+      font-size: 14px;
       background: var(--card-bg);
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(15,17,20,0.05);
       border: 1px solid var(--border-strong);
     }
     th, td {
-      padding: 6px 9px;
+      padding: 7px 10px;
       border-bottom: 1px solid var(--border-soft);
       border-right: 1px solid var(--border-soft);
       vertical-align: top;
@@ -165,7 +180,7 @@
     tr.cordial-header th {
       background: var(--accent-soft);
       font-weight: 600;
-      font-size: 14px;
+      font-size: 15px;
       border-bottom: 1px solid var(--border-strong);
       color: var(--accent);
     }
@@ -173,11 +188,12 @@
       background: #f2f3f7;
       font-weight: 600;
     }
-    @media (max-width: 700px) {
-      .wrapper { padding: 16px 10px 32px; }
+    @media (max-width: 900px) {
+      .wrapper { padding: 16px 10px 40px; }
       .cordial-list { columns: 1; }
-      table { font-size: 12px; }
-      th, td { padding: 5px 6px; }
+      table { font-size: 13px; }
+      th, td { padding: 6px 7px; }
+      .sheet-block { padding: 14px 12px 6px; }
     }
   </style>
 </head>
@@ -256,8 +272,7 @@
 <li><span class="tag">Азиатские</span><a href="#Азиатские_1">Кордиал S&amp;S Клубника-Огурец</a></li>
 <li><span class="tag">Азиатские</span><a href="#Азиатские_28">Кордиал S&amp;S Шисо</a></li>
 <li><span class="tag">Азиатские</span><a href="#Азиатские_55">Кордиал S&amp;S Сенча-Юдзу</a></li>
-</ol>
-</div>
+</ol></div>
 <div class="card section" id="cat_Ягодные">
 <h2>Ягодные</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
@@ -271,8 +286,7 @@
 <li><a href="#Ягодные_183">Кордиал S&amp;S Смородина-Корица-Шалфей</a></li>
 <li><a href="#Ягодные_213">Кордиал S&amp;S Вишня-Апельсин-Корица</a></li>
 <li><a href="#Ягодные_243">Кордиал S&amp;S Кизил - Барбарис</a></li>
-</ol>
-</div>
+</ol></div>
 <div class="card section" id="cat_Фруктовые">
 <h2>Фруктовые</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
@@ -290,8 +304,7 @@
 <li><a href="#Фруктовые_287">Кордиал S&amp;S Яблоко - Дыня - Роза</a></li>
 <li><a href="#Фруктовые_324">Кордиал S&amp;S Личи - Ревень</a></li>
 <li><a href="#Фруктовые_354">Кордиал S&amp;S Голубые Гавайи (Ананас - Апельсин - Кокос)</a></li>
-</ol>
-</div>
+</ol></div>
 <div class="card section" id="cat_Цитрусовые">
 <h2>Цитрусовые</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
@@ -301,8 +314,7 @@
 <li><a href="#Цитрусовые_61">Кордиал S&amp;S Кавказский Мул (  Груша - Имбирь - Грецкий орех )</a></li>
 <li><a href="#Цитрусовые_94">Кордиал S&amp;S Тархун - Лайм</a></li>
 <li><a href="#Цитрусовые_125">Кордиал S&amp;S Мандарин</a></li>
-</ol>
-</div>
+</ol></div>
 <div class="card section" id="cat_Цветочно-травяные">
 <h2>Цветочно-травяные</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
@@ -310,16 +322,14 @@
 <li><a href="#Цветочно-травяные_1">Кордиал S&amp;S Саган Дайля</a></li>
 <li><a href="#Цветочно-травяные_28">Кордиал S&amp;S Лотос - Алое</a></li>
 <li><a href="#Цветочно-травяные_51">Кордиал S&amp;S Алое - Базилик</a></li>
-</ol>
-</div>
+</ol></div>
 <div class="card section" id="cat_Овощныегастро">
 <h2>Овощные/гастро</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
 <ol class="cordial-list">
 <li><a href="#Овощные_гастро_1">Кордиал S&amp;S Кукуруза - Миндаль</a></li>
 <li><a href="#Овощные_гастро_31">Кордиал S&amp;S Томат - Орегано</a></li>
-</ol>
-</div>
+</ol></div>
 <div class="card section" id="cat_Азиатские">
 <h2>Азиатские</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
@@ -327,9 +337,8 @@
 <li><a href="#Азиатские_1">Кордиал S&amp;S Клубника-Огурец</a></li>
 <li><a href="#Азиатские_28">Кордиал S&amp;S Шисо</a></li>
 <li><a href="#Азиатские_55">Кордиал S&amp;S Сенча-Юдзу</a></li>
-</ol>
-</div>
-<div class="section">
+</ol></div>
+<div class="section sheet-block">
 <h2>Ягодные</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
 <table>
@@ -2415,7 +2424,7 @@
 <td></td>
 </tr>
 </table></div>
-<div class="section">
+<div class="section sheet-block">
 <h2>Фруктовые</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
 <table>
@@ -5361,7 +5370,7 @@
 <td>Парфюм ЭФИРЫ - Мята</td>
 </tr>
 </table></div>
-<div class="section">
+<div class="section sheet-block">
 <h2>Цитрусовые</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
 <table>
@@ -6651,7 +6660,7 @@
 <td></td>
 </tr>
 </table></div>
-<div class="section">
+<div class="section sheet-block">
 <h2>Цветочно-травяные</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
 <table>
@@ -7259,7 +7268,7 @@
 <td></td>
 </tr>
 </table></div>
-<div class="section">
+<div class="section sheet-block">
 <h2>Овощные гастро</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
 <table>
@@ -7730,7 +7739,7 @@
 <td></td>
 </tr>
 </table></div>
-<div class="section">
+<div class="section sheet-block">
 <h2>Азиатские</h2>
 <div class="back-to-top-inline"><a href="#top">⟵ к началу</a></div>
 <table>
